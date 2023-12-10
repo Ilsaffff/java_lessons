@@ -1,6 +1,6 @@
-package workHuffman.src.file;
+package workHuffman.file;
 
-import workHuffman.src.bit.BitInputStream;
+import workHuffman.bit.BitInputStream;
 
 import java.io.FileInputStream;
 import java.io.IOException;

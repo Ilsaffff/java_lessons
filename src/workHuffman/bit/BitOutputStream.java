@@ -1,4 +1,4 @@
-package workHuffman.src.bit;
+package workHuffman.bit;
 
 
 import java.io.Closeable;

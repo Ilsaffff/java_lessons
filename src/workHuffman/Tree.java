@@ -1,4 +1,4 @@
-package workHuffman.src;
+package workHuffman;
 
 public class Tree {
     char symbol;

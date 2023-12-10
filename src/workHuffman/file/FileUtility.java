@@ -1,4 +1,4 @@
-package workHuffman.src.file;
+package workHuffman.file;
 
 import java.io.File;
 

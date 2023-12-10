@@ -1,4 +1,4 @@
-package workHuffman.src;
+package workHuffman;
 
 import java.util.Comparator;
 import java.util.HashMap;

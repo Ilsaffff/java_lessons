@@ -1,8 +1,8 @@
-package workHuffman.src;
+package workHuffman;
 
-import workHuffman.src.bit.BitInputStream;
-import workHuffman.src.file.FileUtility;
-import workHuffman.src.file.FileWriter;
+import workHuffman.bit.BitInputStream;
+import workHuffman.file.FileUtility;
+import workHuffman.file.FileWriter;
 
 import java.io.*;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class Huffman {
         try {
             switch (mode) {
                 case "encode" -> {
-                    String text = workHuffman.src.file.FileReader.readFile(inputFile);
+                    String text = workHuffman.file.FileReader.readFile(inputFile);
                     Tree root = HuffmanEncoder.buildHuffmanTree(text);
                     Map<Character, String> huffmanCode = new HashMap<>();
                     HuffmanEncoder.generateHuffmanCodes(root, "", huffmanCode);
@@ -32,16 +32,16 @@ public class Huffman {
                 }
                 case "decode" -> {
                     BitInputStream bitInputStream = new BitInputStream(new FileInputStream(inputFile));
-                    String defaultExtension = workHuffman.src.file.FileReader.readExtensionFromFile(bitInputStream);
-                    Map<Character, String> huffmanCode = workHuffman.src.file.FileReader.readHuffmanCode(bitInputStream);
-                    String decodedString = workHuffman.src.file.FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
+                    String defaultExtension = workHuffman.file.FileReader.readExtensionFromFile(bitInputStream);
+                    Map<Character, String> huffmanCode = workHuffman.file.FileReader.readHuffmanCode(bitInputStream);
+                    String decodedString = workHuffman.file.FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
                     FileWriter.saveDecodedDataToFile(inputFile, defaultExtension, decodedString);
                 }
                 case "info" -> {
                     BitInputStream bitInputStream = new BitInputStream(new FileInputStream(inputFile));
-                    workHuffman.src.file.FileReader.readExtensionFromFile(bitInputStream);
-                    Map<Character, String> huffmanCode = workHuffman.src.file.FileReader.readHuffmanCode(bitInputStream);
-                    String decodedString = workHuffman.src.file.FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
+                    workHuffman.file.FileReader.readExtensionFromFile(bitInputStream);
+                    Map<Character, String> huffmanCode = workHuffman.file.FileReader.readHuffmanCode(bitInputStream);
+                    String decodedString = workHuffman.file.FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
                     int originalSize = FileUtility.getOriginalSize(decodedString);
                     long compressedSize = FileUtility.getCompressedSize(inputFile);
                     double compressionRatio = (double) compressedSize / originalSize;
