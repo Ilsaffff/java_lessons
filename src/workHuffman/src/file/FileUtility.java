@@ -4,7 +4,7 @@ import java.io.File;
 
 public class FileUtility {
 
-    static int getOriginalSize(String originalData) {
+    public static int getOriginalSize(String originalData) {
         return originalData.length();
     }
 

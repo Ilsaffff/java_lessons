@@ -1,8 +1,8 @@
 package workHuffman.src;
 
 import workHuffman.src.bit.BitInputStream;
-import workHuffman.src.file.FileReader;
 import workHuffman.src.file.FileUtility;
+import workHuffman.src.file.FileWriter;
 
 import java.io.*;
 import java.util.HashMap;
@@ -28,20 +28,20 @@ public class Huffman {
                     for (char c : text.toCharArray()) {
                         encodedString.append(huffmanCode.get(c));
                     }
-                    workHuffman.src.file.FileWriter.saveToFile(inputFile, huffmanCode, encodedString.toString());
+                    FileWriter.saveToFile(inputFile, huffmanCode, encodedString.toString());
                 }
                 case "decode" -> {
                     BitInputStream bitInputStream = new BitInputStream(new FileInputStream(inputFile));
                     String defaultExtension = workHuffman.src.file.FileReader.readExtensionFromFile(bitInputStream);
                     Map<Character, String> huffmanCode = workHuffman.src.file.FileReader.readHuffmanCode(bitInputStream);
                     String decodedString = workHuffman.src.file.FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
-                    workHuffman.src.file.FileWriter.saveDecodedDataToFile(inputFile, defaultExtension, decodedString);
+                    FileWriter.saveDecodedDataToFile(inputFile, defaultExtension, decodedString);
                 }
                 case "info" -> {
                     BitInputStream bitInputStream = new BitInputStream(new FileInputStream(inputFile));
                     workHuffman.src.file.FileReader.readExtensionFromFile(bitInputStream);
                     Map<Character, String> huffmanCode = workHuffman.src.file.FileReader.readHuffmanCode(bitInputStream);
-                    String decodedString = FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
+                    String decodedString = workHuffman.src.file.FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
                     int originalSize = FileUtility.getOriginalSize(decodedString);
                     long compressedSize = FileUtility.getCompressedSize(inputFile);
                     double compressionRatio = (double) compressedSize / originalSize;

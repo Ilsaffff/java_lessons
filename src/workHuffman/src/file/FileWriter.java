@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class FileWriter {
 
-    static void saveToFile(String filename, Map<Character, String> huffmanCode, String data) throws IOException {
+    public static void saveToFile(String filename, Map<Character, String> huffmanCode, String data) throws IOException {
         File inputFile = new File(filename);
         String outputFilename;
         if (inputFile.getParent() != null) {
@@ -42,7 +42,7 @@ public class FileWriter {
         }
     }
 
-    static void saveDecodedDataToFile(String filename, String defaultExtension, String decodedData) throws IOException {
+    public static void saveDecodedDataToFile(String filename, String defaultExtension, String decodedData) throws IOException {
         File inputFile = new File(filename);
         String outputFilename;
         if (inputFile.getParent() != null) {

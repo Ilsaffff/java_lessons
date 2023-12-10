@@ -37,7 +37,7 @@ public class FileReader {
         return content.toString();
     }
 
-    static String readExtensionFromFile(BitInputStream bitInputStream) throws IOException {
+    public static String readExtensionFromFile(BitInputStream bitInputStream) throws IOException {
         StringBuilder extensionBuilder = new StringBuilder();
         char extensionChar;
         while ((extensionChar = (char) bitInputStream.readBits(8)) != 0) {
@@ -46,7 +46,7 @@ public class FileReader {
         return extensionBuilder.toString();
     }
 
-    static Map<Character, String> readHuffmanCode(BitInputStream bitInputStream) throws IOException {
+    public static Map<Character, String> readHuffmanCode(BitInputStream bitInputStream) throws IOException {
         Map<Character, String> huffmanCode = new HashMap<>();
         int symbol;
         while ((symbol = bitInputStream.readBits(8)) != 0) {
