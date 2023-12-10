@@ -1,4 +1,4 @@
-package workHoffman;
+package workHuffman;
 
 public class Task {
     public static void main(String[] args) {
